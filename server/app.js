@@ -124,7 +124,72 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// API routes will be added here
+// API Routes
+
+/**
+ * GET /api/bugs - Retrieve all bugs with optional filtering
+ * @param {string} [severity] - Filter by severity (low, medium, high)
+ * @param {string} [status] - Filter by status (open, in-progress, resolved)
+ * @returns {Bug[]} Array of filtered bugs
+ * 
+ * Examples:
+ * - /api/bugs - Returns all bugs
+ * - /api/bugs?severity=high - Returns only high severity bugs
+ * - /api/bugs?status=open - Returns only open bugs  
+ * - /api/bugs?severity=high&status=open - Returns only high severity AND open bugs
+ */
+app.get('/api/bugs', (req, res) => {
+  try {
+    let filteredBugs = [...bugs];
+    
+    // Extract query parameters - filters are applied sequentially for combined filtering
+    const { severity, status } = req.query;
+    if (severity) {
+      if (!VALID_SEVERITIES.includes(severity)) {
+        return res.status(400).json({
+          success: false,
+          error: {
+            message: 'Invalid severity parameter',
+            details: `Severity must be one of: ${VALID_SEVERITIES.join(', ')}`
+          }
+        });
+      }
+      filteredBugs = filteredBugs.filter(bug => bug.severity === severity);
+    }
+    
+    // Filter by status if provided
+    if (status) {
+      if (!VALID_STATUSES.includes(status)) {
+        return res.status(400).json({
+          success: false,
+          error: {
+            message: 'Invalid status parameter',
+            details: `Status must be one of: ${VALID_STATUSES.join(', ')}`
+          }
+        });
+      }
+      filteredBugs = filteredBugs.filter(bug => bug.status === status);
+    }
+    
+    res.json({
+      success: true,
+      data: filteredBugs,
+      count: filteredBugs.length,
+      filters: {
+        severity: severity || null,
+        status: status || null
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: {
+        message: 'Failed to retrieve bugs',
+        details: error.message
+      }
+    });
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

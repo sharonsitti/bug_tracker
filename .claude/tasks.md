@@ -19,10 +19,10 @@ This file contains the complete implementation breakdown for the bug tracker app
 ## =� Feature: Bug List View
 
 ### Backend Tasks
-12. Create GET `/api/bugs` route to return all bugs as JSON
-13. Add query parameter support for filtering bugs by severity
-14. Add query parameter support for filtering bugs by status
-15. Support combined filtering (e.g., `?severity=high&status=open`)
+12. ✅ Create GET `/api/bugs` route to return all bugs as JSON
+13. ✅ Add query parameter support for filtering bugs by severity
+14. ✅ Add query parameter support for filtering bugs by status
+15. ✅ Support combined filtering (e.g., `?severity=high&status=open`)
 
 ### Frontend Tasks
 16. Create Bug interface/type definition matching backend data structure
