@@ -65,6 +65,8 @@ Each task in `tasks.md` should:
 - Be phrased as an actionable TODO (e.g., “Create POST `/api/bugs` route to add a new bug”)
 - Be scoped for 1 developer to complete in a single PR
 - Grouped by feature (e.g., Bug List, Create Bug, etc.)
+- Numbered sequentially (e.g., 1, 2, 3… across the whole project)
+- Marked as completed when code changes have been made
 
 ---
 

@@ -28,7 +28,6 @@ server/node_modules/
 # Build output (if using TypeScript)
 server/dist/
 server/build/
-server/*.js
 server/*.js.map
 
 # Environment variables
