@@ -1,0 +1,173 @@
+/* BugList Component Styles */
+
+.bug-list {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bug-list-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.bug-list-header h1 {
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.bug-list-header p {
+  color: #666;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Loading and Error States */
+.loading, .error, .no-bugs {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+.error button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error button:hover {
+  background-color: #1565c0;
+}
+
+/* Table Styles */
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bugs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.bugs-table th {
+  background-color: #f5f5f5;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+}
+
+.bugs-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.bug-row:hover {
+  background-color: #f9f9f9;
+}
+
+/* Column-specific styles */
+.bug-title {
+  font-weight: 500;
+  color: #1976d2;
+  max-width: 200px;
+}
+
+.bug-description {
+  max-width: 300px;
+  line-height: 1.4;
+  color: #555;
+}
+
+/* Severity badges */
+.severity-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.severity-high .severity-badge {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.severity-medium .severity-badge {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.severity-low .severity-badge {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+}
+
+/* Status badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-open .status-badge {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-in-progress .status-badge {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.status-resolved .status-badge {
+  background-color: #e8f5e8;
+  color: #388e3c;
+}
+
+.bug-assignee {
+  color: #666;
+  font-style: italic;
+}
+
+.bug-created {
+  color: #888;
+  font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .bug-list {
+    padding: 10px;
+  }
+  
+  .bugs-table th,
+  .bugs-table td {
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+  
+  .bug-description {
+    max-width: 150px;
+  }
+  
+  .bug-title {
+    max-width: 120px;
+  }
+}
