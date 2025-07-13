@@ -34,7 +34,7 @@ Claude should not:
 The implementation should use the following:
 
 **Frontend**
-- React (TypeScript)
+- React (JavaScript)
 - No Redux or state libraries
 - Simple CSS or inline styling (no framework)
 
