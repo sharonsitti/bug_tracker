@@ -74,3 +74,63 @@ you create trust, confidence, and forward motion.
 This is about building your technical voice —  
 so when the moment comes to speak, you don’t need to wait for certainty or approval.  
 You’ll speak from a place of grounded confidence.
+
+---
+
+## 🚀 Running the App Locally
+
+Follow these steps to run both the client (React) and server (Express) from scratch, using a single command from the project root.
+
+### 1. Install Dependencies
+
+From the project root, run:
+
+```bash
+npm run install-all
+```
+
+This will install dependencies for both the client and the server.
+
+---
+
+### 2. Build the React App
+
+From the project root, run:
+
+```bash
+npm run build
+```
+
+This will build the React frontend and place the static files in the appropriate directory for the server to serve.
+
+---
+
+### 3. Start the Server (and Serve the Client)
+
+From the project root, run:
+
+```bash
+npm start
+```
+
+This will:
+- Build the frontend (if not already built)
+- Start the Express server
+- Serve both the API and the React app from a single port (default: `http://localhost:3001`)
+
+---
+
+### 4. Access the App
+
+- Open [http://localhost:3001](http://localhost:3001) in your browser to use the app.
+- The API is available at endpoints like [http://localhost:3001/api/bugs](http://localhost:3001/api/bugs).
+- You can check server health at [http://localhost:3001/health](http://localhost:3001/health).
+
+---
+
+### 5. Troubleshooting
+
+- If you make changes to the React app, re-run `npm run build` before restarting the server.
+- If you encounter missing dependencies, ensure you have run `npm run install-all` from the root.
+
+---

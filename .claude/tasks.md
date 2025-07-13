@@ -10,18 +10,18 @@ This file contains the implementation breakdown for the bug tracker application 
 **As a developer or project manager, I want to see all reported bugs in a clear list, so that I can understand the current issues and their status.**
 
 **Technical Tasks:**
-- [ ] Initialize Node.js project with package.json
-- [ ] Install Express and TypeScript dependencies
-- [ ] Create basic Express server with CORS enabled
-- [ ] Set up in-memory data structure for bug storage
-- [ ] Create basic API route structure (`/api/bugs`)
-- [ ] Initialize React TypeScript project
-- [ ] Remove default React boilerplate
-- [ ] Set up basic App component structure
+- [x] Initialize Node.js project with package.json
+- [x] Install Express and TypeScript dependencies
+- [x] Create basic Express server with CORS enabled
+- [x] Set up in-memory data structure for bug storage
+- [x] Create basic API route structure (`/api/bugs`)
+- [x] Initialize React TypeScript project
+- [x] Remove default React boilerplate
+- [x] Set up basic App component structure
 - [ ] Configure proxy for API calls to backend
-- [ ] Create GET `/api/bugs` route to return all bugs
-- [ ] Define Bug data model/interface (title, description, severity, status, assignee)
-- [ ] Seed initial bug data in memory store for development
+- [x] Create GET `/api/bugs` route to return all bugs
+- [x] Define Bug data model/interface (title, description, severity, status, assignee)
+- [x] Seed initial bug data in memory store for development
 - [ ] Create BugList component to display bugs in table format
 - [ ] Create BugItem component for individual bug row display
 - [ ] Add table headers for all bug fields (title, description, severity, status, assignee)
