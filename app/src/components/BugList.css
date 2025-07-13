@@ -80,15 +80,23 @@
   background-color: #f9f9f9;
 }
 
+.bug-row.clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.bug-row.clickable:hover {
+  background-color: #f0f7ff;
+  border-left: 3px solid #1976d2;
+}
+
 /* Column-specific styles */
 .bug-title {
   font-weight: 500;
   color: #1976d2;
-  max-width: 200px;
 }
 
 .bug-description {
-  max-width: 300px;
   line-height: 1.4;
   color: #555;
 }
