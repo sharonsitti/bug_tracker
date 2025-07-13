@@ -74,3 +74,31 @@ you create trust, confidence, and forward motion.
 This is about building your technical voice —  
 so when the moment comes to speak, you don’t need to wait for certainty or approval.  
 You’ll speak from a place of grounded confidence.
+
+
+## Available Scripts
+
+In the app project directory, you can run:
+
+### `cd app`
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
