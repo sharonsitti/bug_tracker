@@ -4,8 +4,10 @@ import './BugList.css';
 /**
  * BugList component that fetches and displays bugs in a table format
  * Handles loading states, errors, and displays bug data from the API
+ * @param {Object} props - Component props
+ * @param {function} props.onBugSelect - Callback function when a bug is selected
  */
-function BugList() {
+function BugList({ onBugSelect }) {
   const [bugs, setBugs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -84,7 +86,11 @@ function BugList() {
             </thead>
             <tbody>
               {bugs.map(bug => (
-                <tr key={bug.id} className={`bug-row severity-${bug.severity} status-${bug.status}`}>
+                <tr 
+                  key={bug.id} 
+                  className={`bug-row severity-${bug.severity} status-${bug.status} clickable`}
+                  onClick={() => onBugSelect && onBugSelect(bug.id)}
+                >
                   <td>{bug.id}</td>
                   <td className="bug-title">{bug.title}</td>
                   <td className="bug-description">{bug.description}</td>

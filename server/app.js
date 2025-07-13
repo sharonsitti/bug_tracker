@@ -143,6 +143,165 @@ app.get('/api/bugs', (req, res) => {
   }
 });
 
+/**
+ * GET /api/bugs/:id - Retrieve a single bug by ID
+ * @param {string} id - Bug ID (must be a valid integer)
+ * @returns {Bug} Single bug object
+ */
+app.get('/api/bugs/:id', (req, res) => {
+  try {
+    const bugId = parseInt(req.params.id, 10);
+    
+    // Validate that ID is a valid number
+    if (isNaN(bugId) || bugId <= 0) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          message: 'Invalid bug ID',
+          details: 'Bug ID must be a positive integer'
+        }
+      });
+    }
+    
+    // Find the bug by ID
+    const bug = bugs.find(b => b.id === bugId);
+    
+    if (!bug) {
+      return res.status(404).json({
+        success: false,
+        error: {
+          message: 'Bug not found',
+          details: `No bug found with ID ${bugId}`
+        }
+      });
+    }
+    
+    res.json({
+      success: true,
+      data: bug
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: {
+        message: 'Failed to retrieve bug',
+        details: error.message
+      }
+    });
+  }
+});
+
+/**
+ * PUT /api/bugs/:id - Update a bug by ID
+ * @param {string} id - Bug ID (must be a valid integer)
+ * @param {Partial<Bug>} body - Bug properties to update
+ * @returns {Bug} Updated bug object
+ */
+app.put('/api/bugs/:id', (req, res) => {
+  try {
+    const bugId = parseInt(req.params.id, 10);
+    
+    // Validate that ID is a valid number
+    if (isNaN(bugId) || bugId <= 0) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          message: 'Invalid bug ID',
+          details: 'Bug ID must be a positive integer'
+        }
+      });
+    }
+    
+    // Find the bug by ID
+    const bugIndex = bugs.findIndex(b => b.id === bugId);
+    
+    if (bugIndex === -1) {
+      return res.status(404).json({
+        success: false,
+        error: {
+          message: 'Bug not found',
+          details: `No bug found with ID ${bugId}`
+        }
+      });
+    }
+    
+    // Extract update data from request body
+    const updateData = req.body;
+    
+    // Validate the update data if provided
+    if (updateData.title !== undefined) {
+      if (!updateData.title || typeof updateData.title !== 'string' || updateData.title.length > 100) {
+        return res.status(400).json({
+          success: false,
+          error: {
+            message: 'Invalid title',
+            details: 'Title is required and must be less than 100 characters'
+          }
+        });
+      }
+    }
+    
+    if (updateData.description !== undefined) {
+      if (!updateData.description || typeof updateData.description !== 'string' || updateData.description.length > 500) {
+        return res.status(400).json({
+          success: false,
+          error: {
+            message: 'Invalid description',
+            details: 'Description is required and must be less than 500 characters'
+          }
+        });
+      }
+    }
+    
+    if (updateData.severity !== undefined && !VALID_SEVERITIES.includes(updateData.severity)) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          message: 'Invalid severity',
+          details: `Severity must be one of: ${VALID_SEVERITIES.join(', ')}`
+        }
+      });
+    }
+    
+    if (updateData.status !== undefined && !VALID_STATUSES.includes(updateData.status)) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          message: 'Invalid status',
+          details: `Status must be one of: ${VALID_STATUSES.join(', ')}`
+        }
+      });
+    }
+    
+    // Update the bug with provided data (only update fields that are provided)
+    const updatedBug = {
+      ...bugs[bugIndex],
+      ...Object.fromEntries(
+        Object.entries(updateData).filter(([key, value]) => 
+          value !== undefined && ['title', 'description', 'severity', 'status', 'assignee'].includes(key)
+        )
+      )
+    };
+    
+    // Replace the bug in the array
+    bugs[bugIndex] = updatedBug;
+    
+    res.json({
+      success: true,
+      data: updatedBug,
+      message: 'Bug updated successfully'
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: {
+        message: 'Failed to update bug',
+        details: error.message
+      }
+    });
+  }
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
