@@ -76,29 +76,49 @@ so when the moment comes to speak, you don’t need to wait for certainty or app
 You’ll speak from a place of grounded confidence.
 
 
-## Available Scripts
+## 🚀 Getting Started
 
-In the app project directory, you can run:
+This application has two parts that need to run simultaneously:
 
-### `cd app`
+### Prerequisites
+- Node.js (v14 or higher)
+- npm
 
-### `npm start`
+### Installation & Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Install Backend Dependencies**
+   ```bash
+   cd server
+   npm install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Install Frontend Dependencies** 
+   ```bash
+   cd ../app
+   npm install
+   ```
 
-### `npm test`
+### Running the Application
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You need to run both services in separate terminal windows:
 
-### `npm run build`
+1. **Start the Backend API (Terminal 1)**
+   ```bash
+   cd server
+   npm start
+   ```
+   🔗 Server will run on http://localhost:4000
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Start the Frontend (Terminal 2)**
+   ```bash
+   cd app  
+   npm start
+   ```
+   🔗 App will open at http://localhost:3000
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The frontend automatically connects to the backend API on port 4000.
+
+### What You'll See
+- **Bug List**: View all bugs in a table format
+- **Bug Details**: Click any bug to view details and update status
+- **Real-time Updates**: Status changes are immediately reflected in the UI
